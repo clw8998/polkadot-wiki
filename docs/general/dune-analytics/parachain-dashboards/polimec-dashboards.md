@@ -5,7 +5,7 @@ sidebar_label: Polimec
 description:
     Polimec offers a decentralized, transparent, and compliant method for fundraising, ensuring that stakeholder incentives are aligned both during and after the fundraising process.
 keywords: [polkadot, dashboard, dune, polimec, PLMC, funding, staking]
-slug: ../neuroweb-dashboards
+slug: ../polimec-dashboards
 ---
 
 # Polimec Dashboards
@@ -16,9 +16,9 @@ Polimec offers a decentralized, transparent, and compliant method for fundraisin
 
 ## Featured Dashboards on Dune
 
-Here you'll find a variety of dashboards that help visualize data from the Moonbeam parachain:
+Here you'll find a variety of dashboards that help visualize data from the Polimec parachain:
 
-- [Polimec](https://dune.com/substrate/polimec): A comprehensive analysis of NeuroWeb, including: DKG, knowledge asset, asset, and XCM analysis.
+- [Polimec](https://dune.com/substrate/polimec): A comprehensive analysis of NeuroWeb, including: Staking, Funding, Asset Analysis.
 
 ## Key Tables
 
@@ -27,7 +27,7 @@ Data from the polimec parachain is organized into several key tables: `polimec.b
 ## Useful Queries
 
 Currently, there are no specific useful queries provided. Please check back later as this section
-will be updated with materialized queries for Neuroweb.
+will be updated with materialized queries for Polimec.
 
 ## Getting Started with Queries
 

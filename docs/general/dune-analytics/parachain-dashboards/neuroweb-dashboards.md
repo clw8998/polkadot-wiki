@@ -16,7 +16,7 @@ NeuroWeb is a decentralized AI blockchain that rewards knowledge creation and sh
 
 ## Featured Dashboards on Dune
 
-Here you'll find a variety of dashboards that help visualize data from the Moonbeam parachain:
+Here you'll find a variety of dashboards that help visualize data from the Neuroweb parachain:
 
 - [Neuroweb](https://dune.com/substrate/neuroweb): A comprehensive analysis of NeuroWeb, including: DKG, knowledge asset, asset, and XCM analysis.
 
