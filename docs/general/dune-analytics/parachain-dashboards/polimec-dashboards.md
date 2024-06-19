@@ -18,7 +18,7 @@ Polimec offers a decentralized, transparent, and compliant method for fundraisin
 
 Here you'll find a variety of dashboards that help visualize data from the Polimec parachain:
 
-- [Polimec](https://dune.com/substrate/polimec): A comprehensive analysis of NeuroWeb, including: Staking, Funding, Asset Analysis.
+- [Polimec](https://dune.com/substrate/polimec): A comprehensive analysis of Polimec, including: Staking, Funding, Asset Analysis.
 
 ## Key Tables
 
