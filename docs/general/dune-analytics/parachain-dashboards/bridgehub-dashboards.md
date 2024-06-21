@@ -29,13 +29,17 @@ Data from the BridgeHub parachain is organized into several key tables: `bridgeh
 
 ## Useful Queries
 
-Currently, there are no specific useful queries provided. Please check back later as this section
-will be updated with materialized queries for BridgeHub.
+Some of the most important queries for Bridgehub are mentioned here.
+
+| Subject Area                 | Query                              | Description                                  |
+|------------------------------|------------------------------------|----------------------------------------------|
+| Polkadot Kusama XCM Msgs     | [queries_3816910](https://dune.com/queries/3816910) | Find all message records between Polkadot and Kusama |
+
+
 
 ## Getting Started with Queries
 
-To get started with querying data from Unique, you are welcome to use the mentioned materialized
-queries. You can use the following DuneSQL queries as examples:
+To get started with querying data from Unique, you are welcome to use the mentioned materialized queries. You can use the following DuneSQL queries as examples:
 
 ```sql title="Bridgehub and Kusama Message Trends" showLineNumbers
 WITH
