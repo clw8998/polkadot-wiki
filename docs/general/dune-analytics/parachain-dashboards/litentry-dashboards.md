@@ -26,9 +26,13 @@ Data from the Litentry parachain is organized into several key tables: `litentry
 
 ## Useful Queries
 
-Currently, there are no specific useful queries provided. Please check back later as this section
-will be updated with materialized queries for Litentry.
+Some of the most important queries for Litentry are mentioned here.
 
+
+| Subject Area                     | Query                                                       | Description                                      |
+|----------------------------------|-------------------------------------------------------------|--------------------------------------------------|
+| Latest Staking Collator          | [query_3827164](https://dune.com/queries/3827164)           | Find the latest collator information on Litentry |
+| LIT To Ethereum                  | [query_3825036](https://dune.com/queries/3825036)           | Find all records of LIT tokens sent to Ethereum  |
 ## Getting Started with Queries
 
 To get started with querying data from Unique, you are welcome to use the mentioned materialized
@@ -39,18 +43,18 @@ SELECT DISTINCT
   block_time,
   extrinsic_id,
   get_href (
-    'https://litentry.statescan.io/#/extrinsics/' || extrinsic_id,
-    extrinsic_id
-  ) as extrinsic_id_url,
-  JSON_VALUE(data, 'strict $[0]') as dest_id,
-  JSON_VALUE(data, 'strict $[1]') as nonce,
-  JSON_VALUE(data, 'strict $[2]') as source_id,
+    'https://litentry.statescan.io/#/extrinsics/' || EXTRINSIC_ID,
+    EXTRINSIC_ID
+  ) AS extrinsic_id_url,
+  JSON_VALUE(data, 'strict $[0]') AS dest_id,
+  JSON_VALUE(data, 'strict $[1]') AS nonce,
+  JSON_VALUE(data, 'strict $[2]') AS source_id,
   IF(
-    JSON_VALUE(data, 'strict $[3]') like '0x%',
-    bytearray_to_int256 (JSON_VALUE(data, 'strict $[3]')) / pow(10, 12),
-    CAST(JSON_VALUE(data, 'strict $[3]') AS int256) / pow(10, 12)
-  ) as amount,
-  JSON_VALUE(data, 'strict $[4]') as recipient,
+    JSON_VALUE(data, 'strict $[3]') LIKE '0x%',
+    bytearray_to_int256 (JSON_VALUE(data, 'strict $[3]')) / POW(10, 12),
+    CAST(JSON_VALUE(data, 'strict $[3]') AS int256) / POW(10, 12)
+  ) AS amount,
+  JSON_VALUE(data, 'strict $[4]') AS recipient,
   get_href (
     'https://etherscan.io/address/' || JSON_VALUE(data, 'strict $[4]'),
     CONCAT(
@@ -61,12 +65,12 @@ SELECT DISTINCT
         LENGTH(JSON_VALUE(data, 'strict $[4]')) - 3
       )
     )
-  ) as recipient_url
+  ) AS recipient_url
 FROM
   litentry.events
 WHERE
   section = 'chainBridge'
-  and method = 'FungibleTransfer'
+  AND method = 'FungibleTransfer'
 ORDER BY
   block_time DESC
 ```

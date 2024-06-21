@@ -32,8 +32,12 @@ Data from the Snowbridge protocol is organized into several key tables: `bridgeh
 
 ## Useful Queries
 
-Currently, there are no specific useful queries provided. Please check back later as this section
-will be updated with materialized queries for Snowbridge.
+Some of the most important queries for Snowbridge are mentioned here.
+
+| Subject Area                     | Query                                                       | Description                                  |
+|----------------------------------|-------------------------------------------------------------|----------------------------------------------|
+| Token Sent From Ethereum         | [query_3828274](https://dune.com/queries/3828274)           | Find tokens sent from the Ethereum chain     |
+| ForeignAsset Mint & Burn On Assethub | [query_3828126](https://dune.com/queries/3828126)           | Find tokens minted and burned on Assethub    |
 
 ## Getting Started with Queries
 
@@ -50,13 +54,13 @@ SELECT DISTINCT
   event_id,
   section,
   method,
-  CAST(JSON_VALUE(data, 'strict $[0]') as varchar) as message_id,
-  CAST(JSON_VALUE(data, 'strict $[1]') as uint256) as nonce
+  CAST(JSON_VALUE(data, 'strict $[0]') AS varchar) AS message_id,
+  CAST(JSON_VALUE(data, 'strict $[1]') AS uint256) AS nonce
 FROM
   bridgehub.events
 WHERE
   section = 'ethereumOutboundQueue'
-  and method = 'MessageAccepted'
+  AND method = 'MessageAccepted'
 ```
 
 Query result:

@@ -26,8 +26,11 @@ Data from the polimec parachain is organized into several key tables: `polimec.b
 
 ## Useful Queries
 
-Currently, there are no specific useful queries provided. Please check back later as this section
-will be updated with materialized queries for Polimec.
+Some of the most important queries for Polimec are mentioned here.
+
+| Subject Area                     | Query                                                       | Description                                      |
+|----------------------------------|-------------------------------------------------------------|--------------------------------------------------|
+| Latest Staking Collator          | [query_3776548](https://dune.com/queries/3776548)           | Find the latest collator information on Polimec |
 
 ## Getting Started with Queries
 
@@ -45,9 +48,9 @@ WITH
       section = 'parachainStaking'
       AND method = 'NewRound'
   ),
-  summed as (
+  summed AS (
     SELECT
-      MAX(block_time) as latest_time,
+      MAX(block_time) AS latest_time,
       JSON_EXTRACT_SCALAR(JSON_PARSE(data), '$[0]') AS delegator,
       SUM(
         CAST(JSON_EXTRACT_SCALAR(data, '$[1]') AS BIGINT) / POW(10, 10)
@@ -76,7 +79,7 @@ SELECT
       '...',
       SUBSTR(delegator, LENGTH(delegator) - 3)
     )
-  ) as delegator_url,
+  ) AS delegator_url,
   reward
 FROM
   summed

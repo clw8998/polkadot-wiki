@@ -26,8 +26,11 @@ Data from the NeuroWeb parachain is organized into several key tables: `neuroweb
 
 ## Useful Queries
 
-Currently, there are no specific useful queries provided. Please check back later as this section
-will be updated with materialized queries for Neuroweb.
+Some of the most important queries for Neuroweb are mentioned here.
+
+| Subject Area     | Query                                                     | Description                               |
+|------------------|-----------------------------------------------------------|-------------------------------------------|
+| Knowledge Asset  | [query_3695045](https://dune.com/queries/3695045)         | Find all transfer records of knowledge assets on Neuroweb |
 
 ## Getting Started with Queries
 
@@ -37,23 +40,23 @@ queries. You can use the following DuneSQL queries as examples:
 ```sql title="Neuroweb Knowledge Asset Distribution" showLineNumbers
 SELECT DISTINCT
   get_href (
-    'https://dkg.origintrail.io/profile?wallet=' || cast(To as VARCHAR),
+    'https://dkg.origintrail.io/profile?wallet=' || CAST(TO AS VARCHAR),
     CONCAT(
-      SUBSTR(To, 1, 4),
+      SUBSTR(TO, 1, 4),
       '...',
-      SUBSTR(To, LENGTH(To) - 3)
+      SUBSTR(TO, LENGTH(TO) - 3)
     )
-  ) as Holder_URL,
+  ) AS Holder_URL,
   CONCAT(
-    SUBSTR(To, 1, 4),
+    SUBSTR(TO, 1, 4),
     '...',
-    SUBSTR(To, LENGTH(To) - 3)
-  ) as Holder,
-  COUNT("Token ID") as "# of Tokens"
+    SUBSTR(TO, LENGTH(TO) - 3)
+  ) AS Holder,
+  COUNT("Token ID") AS "# of Tokens"
 FROM
   query_3695045
 GROUP BY
-  To
+  TO
 ORDER BY
   "# of Tokens" DESC
 ```
